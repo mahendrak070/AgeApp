@@ -95,6 +95,20 @@ class MyHomePage extends StatelessWidget {
     }
   }
 
+  String getImagePath(int age) {
+    if (age <= 12) {
+      return 'assets/images/child.jpg';
+    } else if (age <= 19) {
+      return 'assets/images/teenage.jpg';
+    } else if (age <= 30) {
+      return 'assets/images/young_adult.jpg';
+    } else if (age <= 50) {
+      return 'assets/images/adult.jpg';
+    } else {
+      return 'assets/images/senior.jpg';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<AgeCounter>(
@@ -110,6 +124,12 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Image.asset(
+                  getImagePath(counter.age),
+                  height: 150,
+                  width: 150,
+                ),
+                const SizedBox(height: 20),
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.2),
